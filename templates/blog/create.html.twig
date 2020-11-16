@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <article>
+        <h2> Création d'un article </h2>
+        {{ form_start(formArticle)}}
+
+            {{ form_raw(formArticle.title {'attr': {'placeholer':"Titre de l'article"}}) }}
+            {{ form_raw(formArticle.content {'attr': {'placeholer':"Contenu de l'article"}}) }}
+            {{ form_raw(formArticle.image {'attr': {'placeholer':"URL de l'image"}}) }}
+
+            <button class="btn btn-success">
+                {% if editMode %}
+                    Enregistrer les modifications
+                {% else %}
+                    Ajouter l'article
+                {% endif %}
+        {{ form_end(formArticle)}}
+    </article>
+{% endblock %}
