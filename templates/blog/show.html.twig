@@ -3,8 +3,24 @@
 {% block body %}
     <article>
         <h2>t{{ article.title }}</h2>
-        <div class="metadata">Ecrit le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H;i') }}mn dans la catégorie Politique</div>
+        <div class="metadata">Ecrit le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H;i') }}mn 
+        dans la catégorie {{ article.category.title }}</div>
         <div class="content"><img source="{{ article.image }}" label="">
             {{ article.content | raw }}
     </article>
+    <section id="commentaires">
+        {{% for comment in articles.comment %}}
+        <div class="comment">
+            <div class="raw">
+                <div class="col-3">
+                    <span>{{ comment.author}}<span class=""> {{ comment.createdAt() | date('d/m/Y à H:i') }}
+                    </span>
+                </div>
+                <div class="col">
+                    {{ comment.content | raw}
+                </div>
+            </div>
+        </div>
+        {{% endfor %}}
+    </section>
 {% endblock %}
