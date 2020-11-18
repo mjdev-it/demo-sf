@@ -1,15 +1,33 @@
 security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    ## ajout mj le 17/11/20 d'un encoder
+    encoders:
+        App\Entity\User:
+            algorithm: bcrypt
     providers:
         users_in_memory: { memory: null }
+        in_database:
+            entity:
+                class: App\Entity\User
+                property: email
     firewalls:
         dev:
+            ## mj le 17/11/20 ici les fichiers ou dossiers ou on veut avoir accès en dev
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
             anonymous: lazy
             provider: users_in_memory
 
+            ##provider: in_database
+
+            ##form_login: 
+            ##    login_path: security_login
+            ##    check_path: security_login
+
+            ##logout: 
+            ##    path: security_login
+            ##    target: blog
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
 

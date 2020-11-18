@@ -8,7 +8,7 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="{{ path('home')}}">la bonne cuisine - Symfony</a>
+            <a class="navbar-brand" href="{{ path('home')}}">blog demo - Symfony</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -23,7 +23,17 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('blog_create')}}">Créer un article</a>
                     </li>
-                </ul>
+
+                    {{% if not app.user %}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('login_security')}}">Se connecter</a>
+                    </li>
+                    {{% elsif%}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('login_logout')}}"><Deconnexion</a>
+                    </li>
+                    {{% endif %}}
+               </ul>
             </div>
         </nav>
     <div class="container">

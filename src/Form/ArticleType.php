@@ -17,7 +17,8 @@ class ArticleType extends AbstractType
         $builder
             ->add('title')
             ->add('category', EntityType::class, [
-                'class' => Category::class
+                'class' => Category::class,
+                'choice_label' => 'title'
             ])
             ->add('content')
             ->add('image')
