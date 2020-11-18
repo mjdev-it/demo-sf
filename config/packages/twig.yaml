@@ -3,3 +3,15 @@ twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
     exception_controller: null
+
+    ## ajout mj le 18/11/20 suite conseil Cyril pour mettre en forme le formulaire
+    ## car les labels se présentent à gauche des champs et pas au dessus
+    ## (et pas comme sur la vidéo 4/4 sur Symphony de Lior Chamla de 2018)
+    ## ce qui provoque qqchose de pas très sympa au niveau de l'alignement à gauche
+    #
+    ## on aurai pu ecrire aussi au dessus de la ou est appelé le formulaire, ds le twig.html
+    ## (ceci est un exemple à vérifier si il va bien avec le thème solar de bootswath, donc de boostrap 4)
+    ## {# this form theme will be applied only to the form of this template #}
+    ## {% form_theme form 'foundation_5_layout.html.twig' %}
+    # config/packages/twig.yaml
+    form_themes: ['bootstrap_4_horizontal_layout.html.twig']
